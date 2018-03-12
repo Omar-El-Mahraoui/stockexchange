@@ -12,4 +12,11 @@
 
     <artifactId>api-module</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.switchfully</groupId>
+            <artifactId>service-module</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

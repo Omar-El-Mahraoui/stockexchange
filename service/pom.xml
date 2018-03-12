@@ -17,6 +17,12 @@
             <groupId>com.switchfully</groupId>
             <artifactId>domain-module</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.switchfully</groupId>
+            <artifactId>interfaces-module</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
