@@ -2,17 +2,19 @@ package com.switchfully.domain;
 
 import com.google.common.collect.ImmutableMap;
 
+import java.util.Map;
+
 public class StockRepository {
 
-    private ImmutableMap<String, Stock> stockDb;
+    private static Map<String, Stock> stockDb = new ImmutableMap.Builder<String, Stock>()
+                                                    .put("AA", new Stock("AA", "AA name"))
+                                                    .put("BB", new Stock("BB", "BB name"))
+                                                    .put("CC", new Stock("CC", "CC name"))
+                                                    .build();
 
-    public StockRepository() {
-        stockDb = new ImmutableMap.Builder<String, Stock>()
-                .put("AA", new Stock("AA", "AA name"))
-                .put("BB", new Stock("BB", "BB name"))
-                .put("CC", new Stock("CC", "CC name"))
-                .build();
-    }
+    private StockRepository() { }
+
+    public static StockRepository getInstance() { return new StockRepository(); }
 
     public Stock getStockInformation(String stockId) throws IllegalArgumentException{
         if (!stockDb.containsKey(stockId)) {
@@ -21,7 +23,7 @@ public class StockRepository {
         return stockDb.get(stockId);
     }
 
-    public ImmutableMap<String, Stock> getStockDb() {
+    public Map<String, Stock> getStockDb() {
         return stockDb;
     }
 }

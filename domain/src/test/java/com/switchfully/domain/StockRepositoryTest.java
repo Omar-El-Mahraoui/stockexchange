@@ -1,7 +1,16 @@
 package com.switchfully.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 class StockRepositoryTest {
+
+    @Test
+    void getStockDb_ifCalled_thenReturnTheDb() {
+        assertThat(StockRepository.getInstance().getStockDb())
+                .containsKeys("AA", "BB", "CC");
+    }
 
 }
