@@ -1,6 +1,7 @@
 package com.switchfully.domain;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class StockPrice {
 
@@ -23,5 +24,20 @@ public class StockPrice {
     @Override
     public String toString() {
         return price.toString() + currency.getLabel();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StockPrice that = (StockPrice) o;
+        return Objects.equals(price, that.price) &&
+                currency == that.currency;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(price, currency);
     }
 }
