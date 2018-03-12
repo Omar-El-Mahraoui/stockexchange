@@ -19,4 +19,9 @@ public class StockPrice {
     public StockCurrency getCurrency() {
         return currency;
     }
+
+    @Override
+    public String toString() {
+        return price.toString() + currency.getLabel();
+    }
 }

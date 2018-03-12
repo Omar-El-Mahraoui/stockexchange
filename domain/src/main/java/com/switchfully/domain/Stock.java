@@ -11,7 +11,17 @@ public class Stock {
         this.name = name;
     }
 
-    public void setPrice(StockPrice price) {
-        this.price = price;
+    public void setPrice(StockPrice price) { this.price = price; }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public StockPrice getPrice() {
+        return price;
     }
 }

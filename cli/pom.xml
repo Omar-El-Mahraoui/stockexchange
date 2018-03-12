@@ -10,17 +10,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service-module</artifactId>
+    <artifactId>cli-module</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.switchfully</groupId>
-            <artifactId>domain-module</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.switchfully</groupId>
-            <artifactId>interfaces-module</artifactId>
+            <artifactId>api-module</artifactId>
         </dependency>
 
         <dependency>

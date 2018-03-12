@@ -10,5 +10,4 @@ public class ExternalStockInformationService {
         return new BigDecimal(RandomUtils.nextDouble(10,100) + "").setScale(2,BigDecimal.ROUND_DOWN);
     }
 
-
 }
