@@ -1,44 +1,53 @@
 package com.switchfully.api;
 
 import com.switchfully.domain.Stock;
+import com.switchfully.domain.StockCurrency;
+import com.switchfully.domain.StockPrice;
 
-import java.util.Objects;
+import java.math.BigDecimal;
 import java.util.StringJoiner;
 
 public class StockDto {
 
-    private Stock stock;
+    private String id;
+    private String name;
+    private StockPrice price;
 
-    public StockDto(Stock stock) {
-        this.stock = stock;
+    private StockDto(Stock stock) {
+        this.id = stock.getId();
+        this.name = stock.getName();
+        if (stock.getPrice() == null) {
+            this.price = new StockPrice(new BigDecimal("0"), StockCurrency.EUR);
+        } else {
+            this.price = stock.getPrice();
+        }
     }
 
-    public static StockDto transformToStockDto(Stock stock) {
+    static StockDto transformToStockDto(Stock stock) {
+        if (stock.getPrice() == null) {
+            stock.setPrice(new StockPrice(new BigDecimal("0"), StockCurrency.EUR));
+        }
         return new StockDto(stock);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public StockPrice getPrice() {
+        return price;
     }
 
     @Override
     public String toString() {
         StringJoiner stringJoiner = new StringJoiner("\n");
-        stringJoiner.add(String.format("ID: %s", stock.getId()));
-        stringJoiner.add(String.format("name: %s", stock.getName()));
-        stringJoiner.add(String.format("price: %s", stock.getPrice() != null ? stock.getPrice().getPrice().toString() +
-                " " + stock.getPrice().getCurrency().getLabel() : "UNKNOWN"));
-
+        stringJoiner.add(String.format("ID: %s", id));
+        stringJoiner.add(String.format("name: %s", name));
+        stringJoiner.add(String.format("price: %s", price.getPrice().toString() + price.getCurrency().getLabel()));
         return stringJoiner.toString();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StockDto stockDto = (StockDto) o;
-        return Objects.equals(stock, stockDto.stock);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(stock);
     }
 }
