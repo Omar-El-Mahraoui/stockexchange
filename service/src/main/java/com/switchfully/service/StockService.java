@@ -8,17 +8,15 @@ import com.switchfully.interfaces.ExternalStockInformationService;
 
 public class StockService {
 
-    private StockRepository stockRepository;
     private ExternalStockInformationService externalStockInformationService;
 
-    public StockService(StockRepository stockRepository, ExternalStockInformationService externalStockInformationService) {
-        this.stockRepository = stockRepository;
+    public StockService(StockRepository instance, ExternalStockInformationService externalStockInformationService) {
         this.externalStockInformationService = externalStockInformationService;
     }
 
     public Stock getStock(String stockId) {
         try {
-            Stock stock = stockRepository.getStockInformation(stockId);
+            Stock stock = StockRepository.getInstance().getStockInformation(stockId);
             stock.setPrice(new StockPrice(externalStockInformationService.getPriceInEuroForStock(stockId)
                     , StockCurrency.EUR));
             return stock;
