@@ -9,8 +9,9 @@ public class MyCLI {
 
     public static void main(String[] args) {
         if (args.length == 1) {
-            StockExchangeController stockExchangeController = new StockExchangeController(new StockService(StockRepository.getInstance()
-                    , new ExternalStockInformationService()));
+            StockExchangeController stockExchangeController =
+                    new StockExchangeController(new StockService(StockRepository.getInstance()
+                                                    , new ExternalStockInformationService()));
             System.out.println(stockExchangeController.getStock(args[0]));
         }
     }

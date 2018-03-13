@@ -17,7 +17,8 @@ class StockExchangeControllerTest {
     @Test
     void getStock_givenAValidStockId_thenReturnTheStockDto() {
         StockExchangeController stockExchangeController =
-                new StockExchangeController(new StockService(StockRepository.getInstance(), new ExternalStockInformationService()));
+                new StockExchangeController(new StockService(StockRepository.getInstance()
+                                            , new ExternalStockInformationService()));
 
         StockPrice price = new StockPrice(new BigDecimal("10.50"), StockCurrency.EUR);
         Stock stock = new Stock("AA", "AA name");
