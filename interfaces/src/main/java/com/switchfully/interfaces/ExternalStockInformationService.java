@@ -1,7 +1,9 @@
 package com.switchfully.interfaces;
 
+import javax.inject.Named;
 import java.math.BigDecimal;
 
+@Named
 public class ExternalStockInformationService {
 
     public BigDecimal getPriceInEuroForStock(String stockId) {

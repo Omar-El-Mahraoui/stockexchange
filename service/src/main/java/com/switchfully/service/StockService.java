@@ -6,11 +6,16 @@ import com.switchfully.domain.StockPrice;
 import com.switchfully.domain.StockRepository;
 import com.switchfully.interfaces.ExternalStockInformationService;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Named
 public class StockService {
 
     private ExternalStockInformationService externalStockInformationService;
 
-    public StockService(StockRepository instance, ExternalStockInformationService externalStockInformationService) {
+    @Inject
+    public StockService(ExternalStockInformationService externalStockInformationService) {
         this.externalStockInformationService = externalStockInformationService;
     }
 

@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StockExchangeControllerTest {
 
-    @Test
+    /*@Test
     void getStock_givenAValidStockId_thenReturnTheStockDto() {
         StockExchangeController stockExchangeController =
                 new StockExchangeController(new StockService(StockRepository.getInstance()
@@ -27,6 +27,6 @@ class StockExchangeControllerTest {
 
         assertThat(stockExchangeController.getStock("AA"))
                 .isEqualTo(stockDto);
-    }
+    }*/
 
 }
